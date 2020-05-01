@@ -5,30 +5,10 @@ type state =
   | ErrorFetchingDogs
   | LoadedDogs(array(string));
 
-type article = {
-  id: string,
-  title: string,
-  author: string,
-  date_created: string,
-};
-
 type articlesState =
   | LoadingArticles
   | ErrorFetchingArticles
-  | LoadedArticles(array(article));
-//  | LoadedArticles(Js.Array.t(Js.Dict.t(Js.Json.t)));
-
-module Decode = {
-  let article = json =>
-    Json.Decode.{
-      id: json |> field("id", string),
-      author: json |> field("author", string),
-      date_created: json |> field("date_created", string),
-      title: json |> field("title", string),
-    };
-
-  let articles = Json.Decode.array(article);
-};
+  | LoadedArticles(array(Types.article));
 
 [@react.component]
 let make = () => {
@@ -55,8 +35,8 @@ let make = () => {
       )
       |> then_(Fetch.Response.text)
       |> then_(items => {
-           let articles: array(article) =
-             items |> Json.parseOrRaise |> Decode.articles;
+           let articles: array(Types.article) =
+             items |> Json.parseOrRaise |> Utils.DecodeArticles.articles;
            setArticles(_prev => LoadedArticles(articles));
            articles |> resolve;
          })
