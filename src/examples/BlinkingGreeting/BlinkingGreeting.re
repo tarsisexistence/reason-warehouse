@@ -1,6 +1,7 @@
 [@react.component]
 let make = (~children) => {
   let (show, setShow) = React.useState(() => true);
+  let time = 1000;
 
   // Notice that instead of `useEffect`, we have `useEffect0`. See
   // reasonml.github.io/reason-react/docs/en/components#hooks for more info
@@ -8,7 +9,7 @@ let make = (~children) => {
     let id =
       Js.Global.setInterval(
         () => setShow(previousShow => !previousShow),
-        1000,
+        time,
       );
 
     Some(() => Js.Global.clearInterval(id));
