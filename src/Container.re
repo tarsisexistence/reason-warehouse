@@ -14,6 +14,17 @@ let make = (~children) => {
       ~minHeight="100vh",
       (),
     )}>
-    children
+    <Header />
+    <div
+      className="content"
+      style={ReactDOMRe.Style.make(
+        ~marginLeft="auto",
+        ~marginRight="auto",
+        ~maxWidth="42rem",
+        ~padding="2.625rem 1.3125rem",
+        (),
+      )}>
+      children
+    </div>
   </div>;
 };
