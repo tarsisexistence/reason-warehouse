@@ -14,7 +14,7 @@ let make = (~children) => {
       ~minHeight="100vh",
       (),
     )}>
-    <div
+    <main
       className="content"
       style={ReactDOMRe.Style.make(
         ~marginLeft="auto",
@@ -24,6 +24,6 @@ let make = (~children) => {
         (),
       )}>
       children
-    </div>
+    </main>
   </div>;
 };

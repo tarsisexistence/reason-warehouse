@@ -38,3 +38,8 @@ body.light {
     --inlineCode-text: #1a1a1a;
     --form-shadow: 0 2px 15px 0 rgba(210,214,220,0.5);
 }
+
+a {
+    text-decoration: none;
+    color: var(--textLink);
+}

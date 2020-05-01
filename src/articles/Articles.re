@@ -38,19 +38,14 @@ let make = () => {
     None;
   });
 
-  <div
-    style={ReactDOMRe.Style.make(
-      ~height="120px",
-      ~display="flex",
-      ~alignItems="center",
-      ~justifyContent="center",
-      (),
-    )}>
+  <>
     {switch (state) {
      | ErrorFetchingArticles => React.string("An error occurred!")
      | LoadingArticles => React.string("Loading...")
      | LoadedArticles(articles) =>
-       articles->Belt.Array.map(article => <Article article />)->React.array
+       articles
+       ->Belt.Array.map(article => <Article key={article.id} article />)
+       ->React.array
      }}
-  </div>;
+  </>;
 };
