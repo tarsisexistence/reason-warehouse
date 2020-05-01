@@ -5,13 +5,63 @@ type state =
   | ErrorFetchingDogs
   | LoadedDogs(array(string));
 
+type article = {
+  id: string,
+  title: string,
+  author: string,
+  date_created: string,
+};
+
+type articlesState =
+  | LoadingArticles
+  | ErrorFetchingArticles
+  | LoadedArticles(array(article));
+//  | LoadedArticles(Js.Array.t(Js.Dict.t(Js.Json.t)));
+
+module Decode = {
+  let article = json =>
+    Json.Decode.{
+      id: json |> field("id", string),
+      author: json |> field("author", string),
+      date_created: json |> field("date_created", string),
+      title: json |> field("title", string),
+    };
+
+  let articles = Json.Decode.array(article);
+};
+
 [@react.component]
 let make = () => {
   let (state, setState) = React.useState(() => LoadingDogs);
+  let (articlesState, setArticles) = React.useState(() => LoadingArticles);
 
-  // Notice that instead of `useEffect`, we have `useEffect0`. See
-  // reasonml.github.io/reason-react/docs/en/components#hooks for more info
   React.useEffect0(() => {
+    let payload = Js.Dict.empty();
+    Js.Dict.set(payload, "limit", Js.Json.number(10.0));
+    Js.Dict.set(payload, "offset", Js.Json.number(0.0));
+    Js.Promise.(
+      Fetch.fetchWithInit(
+        "https://blog.erl.net.ua/api/v1/post/get_available",
+        Fetch.RequestInit.make(
+          ~method_=Post,
+          ~body=
+            Fetch.BodyInit.make(
+              Js.Json.stringify(Js.Json.object_(payload)),
+            ),
+          ~headers=
+            Fetch.HeadersInit.make({"Content-Type": "application/json"}),
+          (),
+        ),
+      )
+      |> then_(Fetch.Response.text)
+      |> then_(items => {
+           let articles: array(article) =
+             items |> Json.parseOrRaise |> Decode.articles;
+           setArticles(_prev => LoadedArticles(articles));
+           articles |> resolve;
+         })
+    );
+
     Js.Promise.(
       fetch("https://dog.ceo/api/breeds/image/random/3")
       |> then_(response => response##json())

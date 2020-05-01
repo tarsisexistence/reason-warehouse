@@ -5,8 +5,6 @@ type state =
 
 [@react.component]
 let make = (~children) => {
-  Js.log("asd");
-
   <div
     className="container"
     style={ReactDOMRe.Style.make(
