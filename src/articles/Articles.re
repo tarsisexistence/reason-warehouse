@@ -50,13 +50,7 @@ let make = () => {
      | ErrorFetchingArticles => React.string("An error occurred!")
      | LoadingArticles => React.string("Loading...")
      | LoadedArticles(articles) =>
-       articles
-       ->Belt.Array.map(article => {
-           <div key={article.id}>
-             <p> {React.string(article.title)} </p>
-           </div>
-         })
-       ->React.array
+       articles->Belt.Array.map(article => <Article article />)->React.array
      }}
   </div>;
 };
