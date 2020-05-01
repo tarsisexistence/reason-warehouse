@@ -10,7 +10,7 @@
   "bsc-flags": ["-bs-super-errors", "-bs-no-version-header"],
   "package-specs": [{
     "module": "commonjs",
-    "in-source": true
+    "in-source": false
   }],
   "suffix": ".bs.js",
   "namespace": true,
