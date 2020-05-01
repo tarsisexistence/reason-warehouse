@@ -51,23 +51,10 @@ let make = () => {
      | LoadingArticles => React.string("Loading...")
      | LoadedArticles(articles) =>
        articles
-       ->Belt.Array.mapWithIndex((i, article) => {
-           let imageStyle =
-             ReactDOMRe.Style.make(
-               ~height="120px",
-               ~width="100%",
-               ~marginRight=
-                 i === Js.Array.length(articles) - 1 ? "0px" : "8px",
-               ~borderRadius="8px",
-               ~boxShadow="0px 4px 16px rgb(200, 200, 200)",
-               ~backgroundSize="cover",
-               ~backgroundImage={j|url($article)|j},
-               ~backgroundPosition="center",
-               (),
-             );
+       ->Belt.Array.map(article => {
            <div key={article.id}>
              <p> {React.string(article.title)} </p>
-           </div>;
+           </div>
          })
        ->React.array
      }}

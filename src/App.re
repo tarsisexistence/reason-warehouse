@@ -1,2 +1,2 @@
 [@react.component]
-let make = () => <Container> <Articles /> </Container>;
+let make = () => <> <Header /> <Container> <Articles /> </Container> </>;

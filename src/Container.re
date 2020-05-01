@@ -14,7 +14,6 @@ let make = (~children) => {
       ~minHeight="100vh",
       (),
     )}>
-    <Header />
     <div
       className="content"
       style={ReactDOMRe.Style.make(

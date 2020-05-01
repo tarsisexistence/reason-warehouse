@@ -1,2 +1,2 @@
 [@react.component]
-let make = () => <Dogs />;
+let make = () => <header> <SubHeader /> <Dogs /> </header>;
