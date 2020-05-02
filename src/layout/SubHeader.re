@@ -1,3 +1,14 @@
+let title = "Reason / Erland Blog";
+
+let updateTitle: _ => unit = [%bs.raw
+  {|
+  function updateTitle() {
+    document.title = "⏰ " + title + " ⏰";
+  }|}
+];
+
+updateTitle();
+
 [@react.component]
 let make = () =>
   <section
@@ -23,7 +34,7 @@ let make = () =>
           ~color="var(--textTitle)",
           (),
         )}>
-        {React.string("Reason / Erlang Blog")}
+        {React.string(title)}
       </a>
     </h1>
   </section>;
