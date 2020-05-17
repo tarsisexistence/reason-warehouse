@@ -7,7 +7,7 @@ module.exports = {
   entry: {
     index: [
       './lib/js/src/Index.bs.js',
-      './index.css'
+      './public/index.css'
     ]
   },
   output: {
@@ -18,7 +18,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: 'index.html',
+      template: 'public/index.html',
     })
   ],
   module: {
@@ -31,8 +31,6 @@ module.exports = {
   },
   devServer: {
     port: process.env.PORT || 3000,
-    publicPath: '/',
-    contentBase: '/',
     compress: true,
     historyApiFallback: true,
     open: true,
