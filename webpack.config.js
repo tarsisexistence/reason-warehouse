@@ -35,6 +35,7 @@ module.exports = {
     contentBase: '/',
     compress: true,
     historyApiFallback: true,
-    open: true
+    open: true,
+    hot: true
   }
 };
