@@ -20,7 +20,7 @@ let make = (~article: Types.article) => {
 
   let month = dateCreated |> Js.Date.getMonth |> int_of_float |> getMonthName;
   let day = dateCreated |> Js.Date.getDate;
-  let year = dateCreated |> Js.Date.getYear;
+  let year = dateCreated |> Js.Date.getFullYear;
 
   <article
     style={ReactDOMRe.Style.make(~display="block", ~padding="30px 0", ())}>
