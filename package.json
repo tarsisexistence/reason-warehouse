@@ -1,11 +1,11 @@
 {
   "name": "reason-warehouse",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "maktarsis",
   "license": "MIT",
   "scripts": {
-    "start": "cross-env NODE_ENV=development yarn compile & webpack-dev-server",
-    "build": "cross-env NODE_ENV=production yarn compile & webpack",
+    "start": "yarn compile & cross-env NODE_ENV=development webpack-dev-server",
+    "build": "yarn compile & cross-env NODE_ENV=production webpack",
     "compile": "bsb -make-world",
     "clean": "bsb -clean-world"
   },
