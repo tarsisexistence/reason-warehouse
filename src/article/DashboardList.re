@@ -1,7 +1,7 @@
 type articlesState =
   | LoadingArticles
   | ErrorFetchingArticles
-  | LoadedArticles(array(Types.article));
+  | LoadedArticles(array(Types.dashboardArticle));
 
 [@react.component]
 let make = () => {
@@ -27,7 +27,7 @@ let make = () => {
       )
       |> then_(Fetch.Response.text)
       |> then_(items => {
-           let articles: array(Types.article) =
+           let articles: array(Types.dashboardArticle) =
              items |> Json.parseOrRaise |> Utils.DecodeArticles.articles;
            setState(_prev => LoadedArticles(articles));
            articles |> resolve;
@@ -45,7 +45,7 @@ let make = () => {
      | LoadedArticles(articles) =>
        articles
        ->Belt.Array.map(article =>
-           <ArticlesListItem key={article.id} article />
+           <DashboardArticle key={article.id} article />
          )
        ->React.array
      }}

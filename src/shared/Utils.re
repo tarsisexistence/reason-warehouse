@@ -1,5 +1,5 @@
 module DecodeArticles = {
-  let article: Js.Json.t => Types.article =
+  let article: Js.Json.t => Types.dashboardArticle =
     json =>
       Json.Decode.{
         id: json |> field("id", string),
@@ -21,11 +21,11 @@ module DecodeArticle = {
         date_created: json |> field("date_created", string),
         title: json |> field("title", string),
         timing: json |> field("timing", int),
+        data: json |> field("data", string),
+        date_last_modified: json |> field("date_last_modified", string),
+        is_modified: json |> field("is_modified", bool),
+        tags: json |> field("tags", array(string)),
       };
-  //    "data":"text2 text2 text2 text2 text2 text2",
-  //    "date_last_modified":"2020-04-27T21:18:18Z",
-  //    "is_modified":true,
-  //    "tags":["test","first blog"],
 };
 
 module Common = {

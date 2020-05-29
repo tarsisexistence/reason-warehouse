@@ -4,6 +4,6 @@ let make = () => {
 
   switch (url.path) {
   | ["articles", id] => <Article id />
-  | _ => <ArticlesList />
+  | _ => <DashboardList />
   };
 };

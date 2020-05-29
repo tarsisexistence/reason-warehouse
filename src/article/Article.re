@@ -27,7 +27,7 @@ let make = (~id: string) => {
       |> then_(Fetch.Response.text)
       |> then_(article => {
            let article: Types.article =
-             article |> Json.parseOrRaise |> Utils.DecodeArticles.article;
+             article |> Json.parseOrRaise |> Utils.DecodeArticle.article;
            setState(_prev => LoadedArticle(article));
            article |> resolve;
          })
@@ -52,6 +52,7 @@ let make = (~id: string) => {
         {article.title |> React.string}
       </p>
       <p> {article |> Utils.Common.getTimeDescription |> React.string} </p>
+      <p> {article.data |> React.string} </p>
     </article>
   };
 };

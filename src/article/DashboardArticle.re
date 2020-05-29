@@ -1,5 +1,5 @@
 [@react.component]
-let make = (~article: Types.article) => {
+let make = (~article: Types.dashboardArticle) => {
   let href = "articles/" ++ article.id;
 
   <article
