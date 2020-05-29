@@ -1,8 +1,15 @@
 [@react.component]
 let make = (~article: Types.article) => {
+  let href = "articles/" ++ article.id;
+
   <article
     style={ReactDOMRe.Style.make(~display="block", ~padding="30px 0", ())}>
     <a
+      href
+      onClick={event => {
+        ReactEvent.Mouse.preventDefault(event);
+        ReasonReactRouter.push(href);
+      }}
       style={ReactDOMRe.Style.make(
         ~fontSize="1.75rem",
         ~fontWeight="700",
@@ -10,8 +17,7 @@ let make = (~article: Types.article) => {
         ~boxShadow="none",
         ~display="block",
         (),
-      )}
-      href={"articles/" ++ article.id}>
+      )}>
       {article.title |> React.string}
     </a>
     <small style={ReactDOMRe.Style.make(~fontSize="80%", ())}>

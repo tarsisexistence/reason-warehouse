@@ -22,6 +22,10 @@ let make = () =>
       )}>
       <a
         href="/"
+        onClick={event => {
+          ReactEvent.Mouse.preventDefault(event);
+          ReasonReactRouter.push("/");
+        }}
         style={ReactDOMRe.Style.make(
           ~fontSize="1.98818rem",
           ~lineHeight="2.625rem",
