@@ -40,11 +40,13 @@ let make = () => {
 
   <>
     {switch (state) {
-     | ErrorFetchingArticles => React.string("An error occurred!")
-     | LoadingArticles => React.string("Loading...")
+     | ErrorFetchingArticles => "An error occurred!" |> React.string
+     | LoadingArticles => "Loading..." |> React.string
      | LoadedArticles(articles) =>
        articles
-       ->Belt.Array.map(article => <Article key={article.id} article />)
+       ->Belt.Array.map(article =>
+           <ArticlesListItem key={article.id} article />
+         )
        ->React.array
      }}
   </>;
