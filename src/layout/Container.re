@@ -1,8 +1,3 @@
-type state =
-  | LoadingDogs
-  | ErrorFetchingDogs
-  | LoadedDogs(array(string));
-
 [@react.component]
 let make = (~children) => {
   <div
