@@ -21,6 +21,7 @@ let make = (~article: Types.article) => {
   let month = dateCreated |> Js.Date.getMonth |> int_of_float |> getMonthName;
   let day = dateCreated |> Js.Date.getDate;
   let year = dateCreated |> Js.Date.getFullYear;
+  let readingTime = (article.timing |> Js.Int.toFloat) /. 60.0 |> Js.Math.ceil;
 
   <article
     style={ReactDOMRe.Style.make(~display="block", ~padding="30px 0", ())}>
@@ -41,7 +42,7 @@ let make = (~article: Types.article) => {
       </a>
     </h3>
     <small style={ReactDOMRe.Style.make(~fontSize="80%", ())}>
-      {React.string({j|$month $day, $year | 5 min read|j})}
+      {React.string({j|$month $day, $year | $readingTime min read|j})}
     </small>
     <p> {React.string("Let clean code guide you. Then let it go")} </p>
   </article>;
