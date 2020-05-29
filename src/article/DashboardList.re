@@ -1,7 +1,7 @@
 type articlesState =
   | LoadingArticles
   | ErrorFetchingArticles
-  | LoadedArticles(array(Types.dashboardArticle));
+  | LoadedArticles(array(Typings.dashboardArticle));
 
 [@react.component]
 let make = () => {
@@ -27,7 +27,7 @@ let make = () => {
       )
       |> then_(Fetch.Response.text)
       |> then_(items => {
-           let articles: array(Types.dashboardArticle) =
+           let articles: array(Typings.dashboardArticle) =
              items |> Json.parseOrRaise |> Utils.DecodeArticles.articles;
            setState(_prev => LoadedArticles(articles));
            articles |> resolve;

@@ -1,5 +1,5 @@
 module DecodeArticles = {
-  let article: Js.Json.t => Types.dashboardArticle =
+  let article: Js.Json.t => Typings.dashboardArticle =
     json =>
       Json.Decode.{
         id: json |> field("id", string),
@@ -13,7 +13,7 @@ module DecodeArticles = {
 };
 
 module DecodeArticle = {
-  let article: Js.Json.t => Types.article =
+  let article: Js.Json.t => Typings.article =
     json =>
       Json.Decode.{
         id: json |> field("id", string),
@@ -45,14 +45,4 @@ module Common = {
     | 11 => "December"
     | _ => "Never"
     };
-
-  let getTimeDescription = (article: Types.article) => {
-    let date = Js.Date.fromString(article.date_created);
-    let month = date |> Js.Date.getMonth |> int_of_float |> getMonthName;
-    let day = date |> Js.Date.getDate;
-    let year = date |> Js.Date.getFullYear;
-    let readingTime =
-      (article.timing |> Js.Int.toFloat) /. 60.0 |> Js.Math.ceil;
-    {j|$month $day, $year • $readingTime min read|j};
-  };
 };

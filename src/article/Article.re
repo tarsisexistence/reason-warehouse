@@ -1,7 +1,17 @@
+let getTimeDescription = (article: Typings.article) => {
+  let date = Js.Date.fromString(article.date_created);
+  let month =
+    date |> Js.Date.getMonth |> int_of_float |> Utils.Common.getMonthName;
+  let day = date |> Js.Date.getDate;
+  let year = date |> Js.Date.getFullYear;
+  let readingTime = (article.timing |> Js.Int.toFloat) /. 60.0 |> Js.Math.ceil;
+  {j|$month $day, $year • $readingTime min read|j};
+};
+
 type articleState =
   | LoadingArticle
   | ErrorFetchingArticle
-  | LoadedArticle(Types.article);
+  | LoadedArticle(Typings.article);
 
 [@react.component]
 let make = (~id: string) => {
@@ -26,7 +36,7 @@ let make = (~id: string) => {
       )
       |> then_(Fetch.Response.text)
       |> then_(article => {
-           let article: Types.article =
+           let article: Typings.article =
              article |> Json.parseOrRaise |> Utils.DecodeArticle.article;
            setState(_prev => LoadedArticle(article));
            article |> resolve;
@@ -51,7 +61,7 @@ let make = (~id: string) => {
         )}>
         {article.title |> React.string}
       </p>
-      <p> {article |> Utils.Common.getTimeDescription |> React.string} </p>
+      <p> {article |> getTimeDescription |> React.string} </p>
       <p> {article.data |> React.string} </p>
     </article>
   };
