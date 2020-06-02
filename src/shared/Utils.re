@@ -5,8 +5,10 @@ module DecodeArticles = {
         id: json |> field("id", string),
         author: json |> field("author", string),
         date_created: json |> field("date_created", string),
-        title: json |> field("title", string),
+        description: json |> field("description", string),
+        tags: json |> field("tags", array(string)),
         timing: json |> field("timing", int),
+        title: json |> field("title", string),
       };
 
   let articles = Json.Decode.array(article);

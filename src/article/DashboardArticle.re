@@ -33,6 +33,6 @@ let make = (~article: Typings.dashboardArticle) => {
     <small style={ReactDOMRe.Style.make(~fontSize="80%", ())}>
       {article |> getTimeDescription |> React.string}
     </small>
-    <p> {"Let clean code guide you. Then let it go" |> React.string} </p>
+    <p> {article.description |> React.string} </p>
   </article>;
 };

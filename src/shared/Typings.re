@@ -1,9 +1,11 @@
 type dashboardArticle = {
   id: string,
-  title: string,
   author: string,
-  timing: int,
   date_created: string,
+  description: string,
+  tags: array(string),
+  timing: int,
+  title: string,
 };
 
 type article = {
