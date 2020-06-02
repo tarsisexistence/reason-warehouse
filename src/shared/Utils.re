@@ -24,7 +24,8 @@ module DecodeArticle = {
         title: json |> field("title", string),
         timing: json |> field("timing", int),
         data: json |> field("data", string),
-        date_last_modified: json |> field("date_last_modified", string),
+        date_last_modified:
+          json |> field("date_last_modified", optional(string)),
         is_modified: json |> field("is_modified", bool),
         tags: json |> field("tags", array(string)),
       };

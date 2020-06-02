@@ -14,7 +14,7 @@ type article = {
   author: string,
   timing: int,
   date_created: string,
-  date_last_modified: string,
+  date_last_modified: option(string),
   is_modified: bool,
   data: string,
   tags: array(string),
