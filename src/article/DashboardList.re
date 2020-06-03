@@ -9,7 +9,7 @@ let make = () => {
 
   React.useEffect0(() => {
     let payload = Js.Dict.empty();
-    Js.Dict.set(payload, "limit", Js.Json.number(10.0));
+    Js.Dict.set(payload, "limit", Js.Json.number(100.0));
     Js.Dict.set(payload, "offset", Js.Json.number(0.0));
     Js.Promise.(
       Fetch.fetchWithInit(
