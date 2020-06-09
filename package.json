@@ -14,7 +14,7 @@
     "bs-fetch": "0.6.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "reason-react": "0.8.0"
+    "reason-react": "0.9.1"
   },
   "devDependencies": {
     "@babel/core": "7.10.2",
