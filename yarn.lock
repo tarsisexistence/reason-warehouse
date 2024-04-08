@@ -4493,10 +4493,10 @@ readdirp@~3.4.0:
   dependencies:
     picomatch "^2.2.1"
 
-reason-react@0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/reason-react/-/reason-react-0.9.1.tgz#30a887158200b659aa03e2d75ff4cc54dc462bb0"
-  integrity sha512-nlH0O2TDy9KzOLOW+vlEQk4ExHOeciyzFdoLcsmmiit6hx6H5+CVDrwJ+8aiaLT/kqK5xFOjy4PS7PftWz4plA==
+reason-react@0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/reason-react/-/reason-react-0.11.0.tgz#81b2fae708d412c080054ab31f2bb83f32116441"
+  integrity sha512-Jiz8WjerM2TT//Y6dFEUW5jM7BHjeqIiniyZP6s7TZKzcr/CkSt0fMOvv0UHBXPk8mDf71vsKsWfel5sBBr6Ng==
 
 regenerate-unicode-properties@^8.2.0:
   version "8.2.0"
